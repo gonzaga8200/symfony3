@@ -18,4 +18,14 @@ class DefaultController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
         ]);
     }
+    /**
+     * @Route("/mundo", name="mundo")
+     */
+    public function mundoAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('default/mundo.html.twig', [
+            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..'),
+        ]);
+    }
 }
