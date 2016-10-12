@@ -6,3 +6,21 @@ pruebas_index:
       name: "[a-zA-Z]*"
       page: \d+
       lang: es|en|fr
+
+pruebas_insertar:
+  path: /pruebas/create
+  defaults: { _controller: AppBundle:Pruebas:create }
+
+pruebas_leer:
+  path: /pruebas/read
+  defaults: { _controller: AppBundle:Pruebas:read }
+
+pruebas_update:
+  path: /pruebas/update/{id}/{titulo}/{descripcion}/{precio}
+  defaults: { _controller: AppBundle:Pruebas:update,id:1,titulo:dada,descripcion:dada,precio:1 }
+pruebas_delete:
+  path: /pruebas/delete/{id}
+  defaults: { _controller: AppBundle:Pruebas:delete,id:1 }
+pruebas_native:
+  path: /pruebas/native
+  defaults: { _controller: AppBundle:Pruebas:nativeSql,id:1 }
