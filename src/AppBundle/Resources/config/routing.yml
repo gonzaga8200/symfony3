@@ -24,3 +24,10 @@ pruebas_delete:
 pruebas_native:
   path: /pruebas/native
   defaults: { _controller: AppBundle:Pruebas:nativeSql,id:1 }
+pruebas_form:
+  path: /pruebas/form
+  defaults: { _controller: AppBundle:Pruebas:form}
+pruebas_form_email:
+  path: /pruebas/formEmail/{email}
+  defaults: { _controller: AppBundle:Pruebas:validarEmail}
+

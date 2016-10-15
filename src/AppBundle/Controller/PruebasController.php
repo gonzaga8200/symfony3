@@ -6,7 +6,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Curso;
-
+use AppBundle\Form\CursoType;
+use Symfony\Component\Validator\Constraints as Assert;
 class PruebasController extends Controller
 {
     public function indexAction(Request $request, $name, $page)
@@ -125,6 +126,47 @@ class PruebasController extends Controller
             echo $curso->getTitulo()."<br>";
         }
 
+        die();
+    }
+
+    public function formAction (Request $request){
+        $curso = new Curso();
+        $form = $this->createForm(CursoType::class, $curso);
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()){
+            $status = "Formulario Válido";
+            $data = array(
+                "titulo" => $form->get("titulo")->getData(),
+                "descripcion" => $form->get("descripcion")->getData(),
+                "precio" => $form->get("precio")->getData()
+            );
+        }else{
+            $status = "Formulario inválido";
+            $data = null;
+        }
+
+        return $this->render('AppBundle:Pruebas:form.html.twig',array(
+            'form' => $form->createView(),
+            'status'=>$status,
+            'data'=>$data
+        ));
+    }
+
+    public function validarEmailAction($email){
+        $emailConstraint = new Assert\Email();
+        $emailConstraint->message = "Pásame un buen correo";
+
+        $error = $this->get("validator")->validate(
+            $email,
+            $emailConstraint
+        );
+        if (count($error)==0){
+            echo "Correo Valido!!";
+        }else{
+            echo $error[0]->getMessage();
+        }
         die();
     }
 }
