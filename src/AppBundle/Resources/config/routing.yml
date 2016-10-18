@@ -10,6 +10,9 @@ pruebas_index:
 pruebas_insertar:
   path: /pruebas/create
   defaults: { _controller: AppBundle:Pruebas:create }
+pruebas_test:
+  path: /pruebas/test
+  defaults: { _controller: AppBundle:Pruebas:test }
 
 pruebas_leer:
   path: /pruebas/read

@@ -169,4 +169,8 @@ class PruebasController extends Controller
         }
         die();
     }
+    public function testAction(){
+        echo "bo que pasa";
+        die();
+    }
 }

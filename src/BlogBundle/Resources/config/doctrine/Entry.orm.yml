@@ -63,4 +63,9 @@ BlogBundle\Entity\Entry:
                 user_id:
                     referencedColumnName: id
             orphanRemoval: false
+    oneToMany:
+        entryTag:
+            targetEntity: EntryTag
+            cascade: ["persist"]
+            mappedBy: entry
     lifecycleCallbacks: {  }
